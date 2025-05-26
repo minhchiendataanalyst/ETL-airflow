@@ -1,0 +1,47 @@
+{
+  "workflowConfig": {
+    "openMetadataServerConfig": {
+      "hostPort": "http://192.168.1.26:8585",
+      "authProvider": "no-auth"
+    }
+  },
+  "source": {
+    "type": "oracle-lineage",
+    "serviceName": "oracle_source",
+    "serviceConnection": {
+      "config": {
+        "type": "Oracle",
+        "hostPort": "192.168.1.200:1525", 
+        "username": "BSHKT_BSH", 
+        "password": "Inda1234", 
+        "database": "BSHKT_BSH", 
+        "connectionOptions": {},
+        "connectionArguments": {}
+      }
+    },
+    "sourceConfig": {
+      "config": {
+        "type": "DatabaseLineage",
+        "queryLogDuration": 1,
+        "resultLimit": 1000,
+        "schemaFilterPattern": {
+          "includes": [".*"],
+          "excludes": []
+        },
+        "tableFilterPattern": {
+          "includes": [".*"],
+          "excludes": []
+        }
+      }
+    }
+  },
+  "sink": {
+    "type": "metadata-rest",
+    "config": {}
+  },
+  "pipelineConfig": {
+    "name": "oracle-lineage-pipeline",
+    "description": "Pipeline to extract Oracle lineage",
+    "type": "lineage"
+  }
+}

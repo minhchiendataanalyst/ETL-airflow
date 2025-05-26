@@ -1,0 +1,49 @@
+{
+  "workflowConfig": {
+    "openMetadataServerConfig": {
+      "hostPort": "http://192.168.1.10:8585",
+      "authProvider": "no-auth"
+    }
+  },
+  "source": {
+    "type": "oracle",
+    "serviceName": "oracle_source",
+    "serviceConnection": {
+      "config": {
+        "type": "Oracle",
+        "hostPort": "192.168.1.200:1525", 
+        "username": "BSHKT_BSH", 
+        "password": "Inda1234", 
+        "database": "BSHKT_BSH",
+       "connectionOptions": {},
+        "connectionArguments": {}
+      }
+    },
+    "sourceConfig": {
+      "config": {
+        "type": "DatabaseMetadata",
+        "schemaFilterPattern": {
+          "includes": [".*"],
+          "excludes": []
+        },
+        "tableFilterPattern": {
+          "includes": [".*"],
+          "excludes": []
+        },
+        "includeViews": true,
+        "includeTables": true,
+        "markDeletedTables": true,
+        "markDeletedTablesFromFilterOnly": false
+      }
+    }
+  },
+  "sink": {
+    "type": "metadata-rest",
+    "config": {}
+  },
+  "pipelineConfig": {
+    "name": "oracle-metadata-pipeline",
+    "description": "Pipeline to extract Oracle metadata",
+    "type": "metadata"
+  }
+}
