@@ -52,3 +52,4 @@ RUN pip install --no-cache-dir \
     python-dateutil==2.8.2 \
     psycopg2-binary \
     redis
+
